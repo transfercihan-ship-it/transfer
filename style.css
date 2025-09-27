@@ -1,0 +1,477 @@
+/* ========================================================================== */
+/* ================  GENEL (TÜM SAYFALARDA KULLANILAN)  ===================== */
+/* ========================================================================== */
+
+/* ---- Renk Değişkenleri ---- */
+:root{
+  --bg: #0e1918;            /* koyu yeşil-siyah */
+  --accent: #00a896;        /* deniz turkuazı */
+  --accent-2: #02c39a;      /* açık turkuaz */
+  --brand: #ffd54f;         /* altın sarısı */
+  --brown: #2b2b2b;         /* koyu gri */
+  --cta: #ff8f00;           /* koyu turuncu */
+  --nav-bg: #082c2c;        /* koyu turkuaz */
+  --nav-bg2: #145454;       /* ikinci ton */
+  --text: #fafafa;          /* açık beyaz */
+}
+
+/* ---- Global Baz ---- */
+html{scrollbar-color: var(--accent) #0c0f10; scrollbar-width: thin;}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:#0c0f10;}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--accent),var(--cta));
+  border-radius:8px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg,#0aa, #ff9f43);
+}
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+/* ============ Modern Glass Navbar ============ */
+.navbar {
+  --glass-bg: rgba(8, 28, 28, .55);
+  --glass-bdr: rgba(255,255,255,.08);
+  background: linear-gradient(90deg, var(--glass-bg), rgba(16, 60, 60, .55)) !important;
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  border-bottom: 1px solid var(--glass-bdr);
+  transition: background .25s ease, padding .25s ease, box-shadow .25s ease;
+  padding-top: .85rem;
+  padding-bottom: .85rem;
+}
+
+/* Scroll'da compact + gölge */
+.navbar.scrolled {
+  background: linear-gradient(90deg, rgba(8,28,28,.75), rgba(16,60,60,.75)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  padding-top: .55rem;
+  padding-bottom: .55rem;
+}
+
+/* Linkleri "pill" hover + alttan ince highlight */
+.navbar-nav .nav-link {
+  position: relative;
+  color: #f7f9f9 !important;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: .5rem .85rem;
+  transition: color .2s ease, background-color .2s ease, transform .2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background: rgba(255,255,255,.06);
+}
+
+.navbar-nav .nav-link::after{
+  content:"";
+  position:absolute; left:14%; right:14%; bottom:4px; height:2px;
+  background: linear-gradient(90deg, var(--accent-2), var(--brand));
+  transform: scaleX(0);
+  transform-origin:center;
+  transition: transform .25s ease;
+}
+.navbar-nav .nav-link:hover::after { transform: scaleX(1); }
+.navbar-nav .nav-link.active::after { transform: scaleX(1); }
+
+/* Dropdown daha net */
+.dropdown-menu{
+  background: rgba(10, 26, 26, .95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.dropdown-item{
+  color: #e9f7f7;
+  padding: .55rem .9rem;
+}
+.dropdown-item:hover{
+  background: rgba(2,195,154,.15);
+  color: #fff;
+}
+
+/* Body'de yumuşak scroll */
+html { scroll-behavior: smooth; }
+
+.brand-logo{height:38px;width:auto;display:block}
+.brand-logo.small{height:32px}
+.navbar-brand{color:var(--text)!important;font-weight:700;gap:.5rem}
+.navbar-brand span{letter-spacing:.2px}
+.navbar-nav .nav-link{
+  position:relative;color:var(--text)!important;font-weight:600;
+  padding:.6rem .9rem;transition:color .25s ease;
+}
+
+
+/* ---- Ortak Kart, Özellik Kutuları, İkonlar ---- */
+.card{
+  background: linear-gradient(160deg, #0f1c1c, #1a2d2d);
+  color: var(--text);
+  border: none;border-radius:14px;
+  box-shadow:0 6px 14px rgba(0,0,0,.3);
+}
+#sehir-ici{
+  scroll-margin-top: 250px; /* Navbar yüksekliği + biraz pay */
+}
+#sehir-disi {
+  scroll-margin-top: 250px; /* Navbar yüksekliği + biraz pay */
+}
+#trafik {
+  scroll-margin-top: 250px; /* Navbar yüksekliği + biraz pay */
+}
+#havalimani {
+  scroll-margin-top: 250px; /* Navbar yüksekliği + biraz pay */
+}
+.card .card-body{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:.5rem;color:var(--text);
+}
+.card-title,.card-text{color:var(--text)}
+
+.feature-box{
+  text-align:center;padding:22px;margin:10px;
+  background: linear-gradient(160deg, #0d1b1b, #132525);
+  color:var(--text);border-radius:14px;box-shadow:0 8px 18px rgba(0,0,0,.25)
+}
+.feature-box i{font-size:34px;margin-bottom:10px;color:var(--brand)}
+
+.icon-circle{
+  width:84px;height:84px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;color:var(--brand);font-size:2rem;margin:0 auto 12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+}
+
+/* ---- Link list generic (bölge listeleri temel hal) ---- */
+.link-list{ list-style:none; padding-left:0; columns:1; }
+.link-list li{ margin:6px 0; }
+.link-list a{ color:#cfeeee; text-decoration:none; transition:.2s; }
+.link-list a:hover{ color:var(--accent-2); text-decoration:underline; }
+
+/* ---- Alt CTA Şeridi + Footer ---- */
+.cta-strip{
+  background: linear-gradient(90deg, var(--nav-bg), var(--nav-bg2));
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.cta-strip .btn-cta{
+  background:var(--cta);color:#fff;border:none;border-radius:30px;padding:.7rem 1.4rem;
+}
+.cta-strip .btn-cta:hover{background:#c56312;color:#fff}
+
+.site-footer{ background: linear-gradient(90deg, #0d1b1b, #132525); color:#cfeeee }
+.text-brand{ color: var(--brand); font-weight:700; margin-bottom:.5rem; }
+.text-footer{ color:#d7ecec; opacity:.9; }
+.footer-links li + li{ margin-top:.25rem; }
+.footer-links a{
+  color:#d7ecec;text-decoration:none;border-bottom:1px dashed transparent;
+  transition:color .2s, border-color .2s;
+}
+.footer-links a:hover{ color:var(--accent-2); border-color:var(--accent-2); }
+.footer-contact li{ display:flex; gap:.5rem; align-items:flex-start; color:#e8f6f6; }
+.footer-contact i{ margin-top:.15rem; color: var(--accent-2); }
+.footer-contact a{ color:#e8f6f6; text-decoration:none; }
+.footer-contact a:hover{ color: var(--brand); }
+.footer-sep{ border-color: rgba(255,255,255,.08); }
+.social{
+  color:#e8f6f6; font-size:1.25rem; display:inline-flex; align-items:center;
+  transition: transform .2s ease, color .2s ease;
+}
+.social:hover{ color: var(--accent-2); transform: translateY(-2px); }
+
+/* ---- WhatsApp Floating ---- */
+.whatsapp-float{
+  position:fixed;width:64px;height:64px;bottom:24px;right:24px;
+  background:#25d366;color:#fff;border-radius:50%;text-align:center;
+  font-size:32px;box-shadow:0 4px 10px rgba(0,0,0,.3);z-index:1000;
+  transition:transform .2s, box-shadow .2s;display:flex;align-items:center;justify-content:center;
+}
+.whatsapp-float:hover{ transform:scale(1.1); box-shadow:0 6px 14px rgba(0,0,0,.35) }
+.whatsapp-popup{
+  position:absolute;right:70px;bottom:25px;background:#fff;color:#333;
+  font-size:14px;padding:8px 12px;border-radius:20px;box-shadow:0 3px 8px rgba(0,0,0,.2);
+  white-space:nowrap;display:none;animation:fadeIn .3s
+}
+.whatsapp-float:hover .whatsapp-popup{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+
+/* ========================================================================== */
+/* ==========================  INDEX.HTML (ANA SAYFA)  ====================== */
+/* ========================================================================== */
+
+/* ---- Ana Hero ---- */
+.hero {
+  position: relative;
+  height: 100vh; /* tam ekran */
+  background: url('taksi.png') no-repeat center center/cover; /* arka plan resmin */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); /* görselin üstüne karartma */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo {
+  width: 150px;
+  height: auto;
+}
+
+.hero-section{
+  min-height:56vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#fff;position:relative;
+  background-image:
+    linear-gradient(120deg, rgba(8,44,44,.85), rgba(20,84,84,.7)),
+    url('images/taksi.png');
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  padding:68px 20px;
+}
+.hero-section h1{ text-shadow:0 2px 10px rgba(0,0,0,.5) }
+.hero-section .btn-cta{
+  background:var(--cta);color:#fff;border:none;padding:.8rem 1.5rem;border-radius:30px;
+}
+.hero-section .btn-cta:hover{ background:#c56312; color:#fff }
+
+/* ---- Trafik arka planlı ikinci hero (index’te kullanıldıysa) ---- */
+.hero-traffic{
+  background-image:url('images/trafik.png');
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  min-height:48vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#fff;position:relative;
+}
+.hero-traffic::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg, rgba(8,44,44,.85), rgba(20,84,84,.7));
+}
+.hero-traffic .container{ position:relative; z-index:2 }
+
+/* ---- Neden Fındık? sağdaki logo görseli ---- */
+.logo-figure{
+  max-width:320px;width:100%;height:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.25));opacity:.98;
+}
+/* === HERO (taksi.png arka plan, üstte logo + başlık) === */
+.hero-landing{
+  position: relative;
+  /* sabit navbar varsa üstte biraz boşluk verelim */
+  padding: calc(64px + 1.5rem) 1rem 3rem;
+  min-height: 88vh;                        /* neredeyse tam ekran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* arka plan görseli */
+  background: url('images/taksi.png') center center / cover no-repeat;
+  color: #fff;
+}
+
+/* okunabilirlik için koyu overlay */
+.hero-landing .hero-overlay{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
+  z-index: 1;
+}
+
+/* içerik overlay’in üstünde kalsın */
+.hero-landing .container{
+  position: relative;
+  z-index: 2;
+}
+
+/* logo boyutu: ekrana göre ölçeklensin */
+.hero-logo-landing{
+  width: clamp(140px, 22vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
+}
+
+/* başlık gölgesi (yüksek kontrast) */
+.hero-heading{
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.65),
+    0 0 24px rgba(0,0,0,.45);
+  font-weight: 800;
+}
+
+/* mobil ayarları */
+@media (max-width: 576px){
+  .hero-landing{
+    min-height: 78vh;
+    padding: calc(56px + 1rem) 1rem 2rem;
+  }
+  .hero-heading{ font-size: 1.8rem; }
+}
+
+@media (max-width:576px){ .logo-figure{ max-width:220px }}
+
+/* ========================================================================== */
+/* =======================  HAKKIMIZDA.HTML (ABOUT)  ======================== */
+/* ========================================================================== */
+
+/* ---- Hakkımızda Hero (araclar.png) ---- */
+.about-section{
+  position:relative;
+  background:
+    linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.2)),
+    url("images/araclar.png") center -400px / cover no-repeat;
+  min-height:800px;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#000;padding:100px 20px;
+}
+/* Yazılara yoğun bulut gölgesi */
+.about-section h1, .about-section h2, .about-section p{
+  text-shadow:
+    0 0 5px rgba(0,0,0,.9),
+    0 0 10px rgba(0,0,0,.9),
+    0 0 20px rgba(0,0,0,.8),
+    0 0 40px rgba(0,0,0,.7),
+    0 0 60px rgba(0,0,0,.6),
+    0 0 80px rgba(0,0,0,.5);
+}
+
+/* Başlığın üstündeki logo ve sağ alt rozet */
+.hero-mark{
+  width:350px;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35));
+}
+.hero-badge{
+  position:absolute;right:-295px;bottom:-198px;width:64px;height:auto;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));
+}
+@media (max-width:576px){
+  .hero-mark{ width:84px }
+  .hero-badge{ width:52px; right:10px; bottom:10px }
+}
+
+/* ========================================================================== */
+/* =======================  HİZMETLER.HTML (SERVICES)  ====================== */
+/* ========================================================================== */
+
+/* Hizmet kartları zaten .card ile ortak; ek stiller gerekirse buraya ekleyin */
+
+/* Hizmet bölgeleri koyu panel (index veya hizmetler sayfasında) */
+.regions-section{
+  background: linear-gradient(120deg, rgba(8,44,44,.85), rgba(20,84,84,.72));
+  border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px;
+}
+.regions-section h2, .regions-section h4{
+  color:#ffc107;text-shadow:0 2px 6px rgba(0,0,0,.3)
+}
+.regions-section .link-list{ columns:1 }
+.regions-section .link-list li{
+  break-inside:avoid;margin:6px 0;line-height:1.25;padding-left:10px;position:relative;
+}
+.regions-section .link-list li::before{
+  content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;
+  background:var(--accent-2);box-shadow:0 0 0 2px rgba(2,195,154,.18);
+}
+.regions-section .link-list a{
+  color:#eafafa;text-decoration:none;border-bottom:1px dashed transparent;
+  transition:color .2s, border-color .2s, opacity .2s;opacity:.95;
+}
+.regions-section .link-list a:hover{ color:#17a2b8; text-decoration:underline }
+.regions-section .link-list a:focus{
+  outline:none;box-shadow:0 0 0 .2rem rgba(2,195,154,.25);
+  border-color:transparent;border-radius:4px;
+}
+.regions-section .subhead{ color:#f3fefe; opacity:.9; margin-bottom:.25rem }
+@media (min-width:768px){ .regions-section .link-list{ columns:2 } }
+@media (min-width:1200px){ .regions-section .link-list{ columns:3 } }
+
+/* ========================================================================== */
+/* ==========================  UCRETLER.HTML (PRICING)  ===================== */
+/* ========================================================================== */
+
+/* Ücretler sayfası için özel bir blok yoktu; ihtiyaç olursa buraya ekleyin
+   ör: .pricing-table, .price-badge vb. */
+
+/* ========================================================================== */
+/* ==========================  İLETİSİM.HTML (CONTACT)  ===================== */
+/* ========================================================================== */
+
+.contact-card{
+  background:#fff;color:#0f1c1c;border:0;border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,.15);text-align:center;
+}
+.contact-card h6, .contact-card .card-title{ color:#0f1c1c; font-weight:700 }
+.contact-card .muted{ color:#445; opacity:.9 }
+
+/* Destek görselleri */
+.trafik-img{
+  max-height:320px;object-fit:cover;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+.turk-loca{
+  max-width:420px;width:100%;height:auto;margin:0 auto;display:block;
+}
+
+/* ========================================================================== */
+/* ============================  CALIS.HTML (FORM)  ========================= */
+/* ========================================================================== */
+.hero-section {
+  background-image:
+    linear-gradient(120deg, rgba(13,107,107,.78), rgba(230,126,34,.55)),
+    url('images/karsilama.png');
+  background-position: center 70%; /* 40 yerine 70 yap, resim aşağı kayar */
+  background-size: cover;          /* alanı doldursun */
+  background-repeat: no-repeat;
+}
+
+.apply-card{
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;backdrop-filter:blur(4px);
+  padding:24px;margin:0 auto;max-width:640px;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.4),
+    0 8px 16px rgba(0,0,0,0.3),
+    0 16px 32px rgba(0,0,0,0.2);
+}
+.apply-card .form-control,
+.apply-card .form-select,
+.apply-card textarea{
+  background:#0f1c1c;color:#fff;border:1px solid #1f3a3a;border-radius:8px;
+  padding:12px;font-size:15px;width:100%;
+}
+.apply-card .form-control::placeholder,
+.apply-card textarea::placeholder{ color:#9bb; font-size:14px }
+.apply-card .form-control:focus,
+.apply-card .form-select:focus,
+.apply-card textarea:focus{
+  border-color:var(--accent);box-shadow:0 0 0 .25rem rgba(0,168,150,.25);
+}
+.apply-card button{
+  width:100%;padding:12px;border-radius:8px;font-size:16px;font-weight:600;
+}
+
+/* ========================================================================== */
+/* ===============================  RESPONSIVE  ============================= */
+/* ========================================================================== */
+
+@media (max-width:991px){
+  .link-list{ columns:1 }
+  .navbar-nav .nav-link{ padding:.55rem .85rem }
+  .brand-logo{ height:34px } .brand-logo.small{ height:28px }
+  .hero-section{ min-height:46vh; padding:52px 16px }
+  .hero-section h1{ font-size:1.9rem }
+  .hero-section p{ font-size:1rem }
+}
+
+@media (max-width:768px){
+  .apply-card{ padding:18px; max-width:100%; margin:16px }
+  .apply-card h2{ font-size:1.4rem }
+  .apply-card .form-control,
+  .apply-card .form-select,
+  .apply-card textarea{ font-size:14px; padding:10px }
+  .apply-card button{ font-size:15px; padding:10px }
+}

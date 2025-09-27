@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bizimle Çalışın | Cihan Transfer</title>
+  <meta name="description" content="Cihan Transfer sürücü başvuru formu. Bilgilerinizi bırakın, WhatsApp'tan hemen dönüş yapalım." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    .apply-hero{
+      min-height: 45vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
+      background-image: linear-gradient(120deg, rgba(0,139,139,.65), rgba(230,126,34,.55)), url('images/apply-hero.jpg');
+      background-size:cover; background-position:center;
+    }
+    .apply-card{ border:0; box-shadow: 0 10px 24px rgba(0,0,0,.15); }
+    .req {color:#e74c3c}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR (ortak) -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img class="brand-logo small me-2" src="images/turk-loca.png" alt="Türkiye Lokasyon">
+  <img class="brand-logo me-2" src="images/logo.png" alt="Cihan Transfer Logo">
+  <span>Cihan Transfer</span>
+</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Menüyü Aç">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Ana Sayfa</a></li>
+        <li class="nav-item"><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#hizmetler" id="hizmetlerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Hizmetler
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="hizmetlerDropdown">
+<li><a class="dropdown-item" href="hizmetler.html#sehir-ici">İstanbul İçi Ulaşım</a></li>
+<li><a class="dropdown-item" href="hizmetler.html#havalimani">Havalimanı Transfer</a></li>
+<li><a class="dropdown-item" href="hizmetler.html#trafik">Trafik Takibi</a></li>
+<li><a class="dropdown-item" href="hizmetler.html#sehir-disi">Şehir Dışı Yolculuk</a></li>
+
+  </ul>
+</li>
+
+
+        <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+        <li class="nav-item">
+  <a class="nav-link" href="calis.html">Bizimle Çalışmak İster misiniz?</a>
+</li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero-section" style="background-image:
+  linear-gradient(120deg, rgba(13,107,107,.78), rgba(230,126,34,.55)),
+  url('images/karsilama.png'); background-position:center 40%;">
+  <div class="container position-relative">
+    <h1 class="display-6 fw-bold">Bizimle Çalışmak İster misiniz?</h1>
+    <p class="lead mb-0">Formu doldurun, başvurunuz WhatsApp mesajı olarak bize gelsin.</p>
+  </div>
+</header>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card apply-card">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-3 text-warning">Sürücü Başvuru Formu</h2>
+
+            <form id="applyForm" onsubmit="return sendToWhatsApp(event)">
+              <div class="row g-3">
+                <!-- Ad Soyad -->
+                <div class="col-12">
+                  <label class="form-label">Ad Soyad <span class="req">*</span></label>
+                  <input type="text" class="form-control" id="adsoyad" required>
+                </div>
+
+                <!-- Telefon -->
+                <div class="col-12">
+                  <label class="form-label">Telefon (WhatsApp) <span class="req">*</span></label>
+                  <input type="tel" class="form-control" id="telefon" inputmode="tel" placeholder="+90 5xx xxx xx xx" required>
+                </div>
+
+                <!-- Araç Modeli (select) -->
+                <div class="col-12">
+                  <label class="form-label">Araç Modeli <span class="req">*</span></label>
+                  <select id="aracModel" class="form-select" required>
+                    <option value="" selected disabled>Seçiniz</option>
+
+                    <optgroup label="Mercedes">
+                      <option>Mercedes Vito</option>
+                      <option>Mercedes Viano</option>
+                      <option>Mercedes Sprinter</option>
+                      <option>Mercedes E-Serisi</option>
+                      <option>Mercedes C-Serisi</option>
+                    </optgroup>
+
+                    <optgroup label="Volkswagen">
+                      <option>VW Passat</option>
+                      <option>VW Transporter</option>
+                      <option>VW Caravelle</option>
+                      <option>VW Caddy</option>
+                      <option>VW Tiguan</option>
+                    </optgroup>
+
+                    <optgroup label="Renault / Dacia / Fiat">
+                      <option>Renault Megane</option>
+                      <option>Renault Clio</option>
+                      <option>Dacia Duster</option>
+                      <option>Fiat Egea</option>
+                      <option>Fiat Doblo</option>
+                    </optgroup>
+
+                    <optgroup label="Ford / Opel / Peugeot">
+                      <option>Ford Focus</option>
+                      <option>Ford Tourneo</option>
+                      <option>Opel Astra</option>
+                      <option>Peugeot 3008</option>
+                      <option>Peugeot Traveller</option>
+                    </optgroup>
+
+                    <optgroup label="Hyundai / Kia / Nissan">
+                      <option>Hyundai i20</option>
+                      <option>Hyundai Tucson</option>
+                      <option>Kia Sportage</option>
+                      <option>Nissan Qashqai</option>
+                      <option>Nissan Juke</option>
+                    </optgroup>
+
+                    <optgroup label="Toyota / Honda / Skoda">
+                      <option>Toyota Corolla</option>
+                      <option>Toyota Camry</option>
+                      <option>Honda Civic</option>
+                      <option>Skoda Superb</option>
+                      <option>Skoda Octavia</option>
+                    </optgroup>
+
+                    <optgroup label="BMW / Audi / Tesla">
+                      <option>BMW 3 Serisi</option>
+                      <option>BMW 5 Serisi</option>
+                      <option>Audi A3</option>
+                      <option>Audi A4</option>
+                      <option>Tesla Model 3</option>
+                    </optgroup>
+
+                    <option value="digerdiger">Diğer…</option>
+                  </select>
+                </div>
+
+                <!-- Diğer Model (dinamik açılır) -->
+                <div class="col-12 d-none" id="digerModelWrapper">
+                  <label class="form-label">Diğer Model</label>
+                  <input type="text" class="form-control" id="digerModel" placeholder="Örn: Citroën C-Elysée">
+                </div>
+
+                <!-- Araç Yılı (select) -->
+                <div class="col-12">
+                  <label class="form-label">Araç Yılı <span class="req">*</span></label>
+                  <select id="aracYil" class="form-select" required>
+                    <option value="" selected disabled>Seçiniz</option>
+                    <!-- JS ile doldurulacak -->
+                  </select>
+                </div>
+
+                <!-- Ek Mesaj -->
+                <div class="col-12">
+                  <label class="form-label">Ek Mesaj</label>
+                  <textarea class="form-control" id="mesaj" rows="3" placeholder="Deneyim yılı, çalışma saatleri tercihi vb."></textarea>
+                </div>
+              </div>
+
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-success btn-lg">
+                  <i class="bi bi-whatsapp me-1"></i> WhatsApp ile Gönder
+                </button>
+              </div>
+
+              <p class="text-muted small mt-2 mb-0">
+                Gönder’e bastığınızda WhatsApp açılır ve mesajınız önceden doldurulur.
+              </p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-strip py-4">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <h5 class="mb-0 text-white text-center text-md-start">
+      Hemen yolculuğunu planla — 7/24 WhatsApp’tayız.
+    </h5>
+    <a href="https://wa.me/905317141536?text=Merhaba%2C%20ara%C3%A7%20talep%20ediyorum%20🚖"
+       class="btn btn-cta btn-lg">
+      <i class="bi bi-whatsapp me-1"></i> WhatsApp’tan Yaz
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Marka / Logo -->
+      <div class="col-md-4">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <img src="images/turk-loca.png" alt="Lokasyon" width="36" height="36" loading="lazy">
+          <img src="images/logo1.png" alt=" Cihan Transfer" width="44" height="44" loading="lazy">
+          <strong class="text-white fs-5">Cihan Transfer</strong>
+        </div>
+        <p class="text-footer">
+          İstanbul içi ve şehir dışı güvenli, hızlı ulaşım. Havalimanı transferi, VIP ve kurumsal servis.
+        </p>
+      </div>
+
+      <!-- Hızlı Linkler -->
+      <div class="col-md-4">
+        <h6 class="text-brand">Hızlı Linkler</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="hizmetler.html#sehir-ici">Şehir İçi Ulaşım</a></li>
+          <li><a href="hizmetler.html#havalimani">Havalimanı Transfer</a></li>
+          <li><a href="hizmetler.html#sehir-disi">Şehir Dışı</a></li>
+          <li><a href="ucretler.html">Ücretler</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- İletişim -->
+      <div class="col-md-4">
+        <h6 class="text-brand">İletişim</h6>
+        <ul class="list-unstyled footer-contact">
+          <li><i class="bi bi-telephone"></i> <a href="tel:+905317145536">+90 531 714 55 36</a></li>
+          <li><i class="bi bi-whatsapp"></i> <a href="https://wa.me/905317145536" target="_blank">WhatsApp Hattı</a></li>
+          <li><i class="bi bi-geo-alt"></i> <span>Esenyurt İstanbul/Türkiye</span></li>
+          <li><i class="bi bi-clock"></i> <span>7/24 Hizmet</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-sep my-4">
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <small class="text-footer mb-0">
+        © 2025  Cihan Transfer — Tüm Hakları Saklıdır.
+      </small>
+      <div class="d-flex align-items-center gap-3">
+        <a class="social" href="https://wa.me/905317141536" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a class="social" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a class="social" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // >>>>> Numaranızı buraya girin (başında + yok, TR için 90 ile)
+  const WHATSAPP_PHONE = "905317141536";
+
+  // Yıl seçeneklerini doldur
+  function populateYears(startFrom = new Date().getFullYear(), until = 1995) {
+    const yilSelect = document.getElementById('aracYil');
+    yilSelect.innerHTML = '<option value="" selected disabled>Seçiniz</option>';
+    for (let y = startFrom; y >= until; y--) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      yilSelect.appendChild(opt);
+    }
+  }
+
+  // "Diğer…" seçilince ekstra input göster
+  function bindModelOther() {
+    const modelSelect = document.getElementById('aracModel');
+    const digerWrap   = document.getElementById('digerModelWrapper');
+    modelSelect.addEventListener('change', () => {
+      if (modelSelect.value === 'digerdiger') {
+        digerWrap.classList.remove('d-none');
+        document.getElementById('digerModel').focus();
+      } else {
+        digerWrap.classList.add('d-none');
+        document.getElementById('digerModel').value = '';
+      }
+    });
+  }
+
+  // WhatsApp’a gönder
+  function sendToWhatsApp(e){
+    e.preventDefault();
+
+    const adsoyad  = document.getElementById('adsoyad').value.trim();
+    const telefon  = document.getElementById('telefon').value.trim();
+    const modelSel = document.getElementById('aracModel').value;
+    const diger    = document.getElementById('digerModel').value.trim();
+    const yil      = document.getElementById('aracYil').value;
+    const mesaj    = document.getElementById('mesaj').value.trim();
+
+    if(!adsoyad || !telefon || !modelSel || !yil){
+      alert('Lütfen zorunlu alanları doldurun.');
+      return false;
+    }
+
+    const model = (modelSel === 'digerdiger' && diger) ? `Diğer - ${diger}` : modelSel;
+
+    const text =
+`Merhaba, sürücü başvurusu yapmak istiyorum.
+• Ad Soyad: ${adsoyad}
+• Telefon: ${telefon}
+• Araç Modeli: ${model}
+• Araç Yılı: ${yil}
+• Ek Mesaj: ${mesaj || '-'}
+`;
+
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+    return false;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    populateYears();     // yıl dropdown’u doldur
+    bindModelOther();    // diğer model alanını bağla
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".navbar-nav .nav-link");
+    const current = window.location.pathname.split("/").pop() || "index.html";
+
+    links.forEach(link => {
+      link.classList.remove("active"); // önce herkesten kaldır
+      if (link.getAttribute("href") === current) {
+        link.classList.add("active");  // sadece o sayfaya ekle
+      }
+    });
+  });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
